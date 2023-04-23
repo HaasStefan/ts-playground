@@ -1,18 +1,14 @@
-function add(a: number, b: number) {
-  return a + b;
-}
+import { Bird } from "./birds/bird";
+import { generateBirdClass, generateBirdInterface } from "./birds/bird-factory";
+import { Eagle } from "./birds/eagle";
+import { Parrot } from "./birds/parrot";
 
-// function isNumber(x: unknown): x is number {
-//   return typeof x === "number";
-// }
+const bird = generateBirdInterface("parrot");
+console.log(typeof bird);
 
-const isNumber = (x: unknown): x is number => typeof x === "number";
 
-const myArray = [1, 2, 3, 4, "5", 6];
-
-for (const element of myArray) {
-  if (isNumber(element)) {
-    const y = add(element, 1);
-    console.log(y);
-  }
-}
+const eagle = generateBirdClass("eagle");
+console.log(typeof eagle);
+console.log(eagle instanceof Bird);
+console.log(eagle instanceof Eagle);
+console.log(eagle instanceof Parrot);
